@@ -1,6 +1,23 @@
 {% extends "layout.jinja" %}
 {% block content %}
 <div class="hero-section">
-    <h1>Whispr</h1>
+    <div class="hero-text">
+    <h1>
+        Whispr
+    </h1>
+
+    <p class="tagline">
+    A chatroom service that keeps your conversations yours. No data collected, no snooping, no catch.
+    </p> 
+
+    <p class="tagline-cont">
+    Well, what's holding you back?
+        <form action="{{ url_for('chat') }}">
+            <button type="submit" class="tagline-button">
+                <span>Get Started</span>
+            </button>
+        </p>
+        </form>  
+    </div>
 </div>
 {% endblock %}
