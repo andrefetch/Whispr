@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for #type: ignore
+from flask import Flask, render_template, flash, url_for, redirect #type: ignore
 from forms import RegistrationForm, LoginForm
 import os
 
@@ -32,6 +32,9 @@ def login():
 @app.route('/register', methods=['GET', 'POST']) # Accepts both Get & Post methods.
 def register():
     form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!', 'success')
+        return redirect(url_for('chat'))
     return render_template('auth/register.jinja', title="Sign Up", form=form)
 
 if __name__ == "__main__": # Main entry point :)
