@@ -5,7 +5,7 @@ app = Flask(
     __name__,
     template_folder=os.path.join('..', 'frontend', 'templates'),
     static_folder=os.path.join('..', 'frontend', 'static'),
-    )
+)
 
 @app.route("/")
 @app.route('/home')
