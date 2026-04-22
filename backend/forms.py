@@ -1,6 +1,6 @@
-from flask_wtf import FlaskForm # type: ignore
-from wtforms import StringField, PasswordField, SubmitField, BooleanField # type: ignore
-from wtforms.validators import DataRequired, Length, Email, EqualTo # type: ignore
+from flask_wtf import FlaskForm 
+from wtforms import StringField, PasswordField, SubmitField, BooleanField 
+from wtforms.validators import DataRequired, Length, Email, EqualTo 
 
 """
 DataRequired -- Forces the user to input some type of data, no whitespace allowed to be inputted.

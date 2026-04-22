@@ -10,18 +10,28 @@
 
             <div class="auth-field">
                 {{ form.username.label(class='auth-label') }}
-                {{ form.username(class='form-control auth-input', placeholder='username') }}
+                {{ form.username(class='form-control auth-input' + (' is-invalid' if form.username.errors else ''), placeholder='username') }}
+                {% if form.username.errors %}
+                    {% for error in form.username.errors %}
+                        <div class="auth-error">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
             </div>
 
             <div class="auth-field">
                 {{ form.email.label(class='auth-label') }}
-                {{ form.email(class='form-control auth-input', placeholder='you@example.com') }}
+                {{ form.email(class='form-control auth-input' + (' is-invalid' if form.email.errors else ''), placeholder='you@example.com') }}
+                {% if form.email.errors %}
+                    {% for error in form.email.errors %}
+                        <div class="auth-error">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
             </div>
 
             <div class="auth-field">
                 {{ form.password.label(class='auth-label') }}
                 <div class="auth-input-wrap">
-                    {{ form.password(class='form-control auth-input auth-input--password', placeholder='••••••••') }}
+                    {{ form.password(class='form-control auth-input auth-input--password' + (' is-invalid' if form.password.errors else ''), placeholder='••••••••') }}
                     <button type="button" class="auth-toggle" aria-label="Show password" data-toggle-password>
                         <svg class="auth-toggle-eye" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -36,11 +46,17 @@
                     </button>
                 </div>
             </div>
+
+            {% if form.password.errors %}
+                {% for error in form.password.errors %}
+                    <div class="auth-error">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
 
             <div class="auth-field">
                 {{ form.confirm_password.label(class='auth-label') }}
                 <div class="auth-input-wrap">
-                    {{ form.confirm_password(class='form-control auth-input auth-input--password', placeholder='••••••••') }}
+                    {{ form.confirm_password(class='form-control auth-input auth-input--password' + (' is-invalid' if form.confirm_password.errors else ''), placeholder='••••••••') }}
                     <button type="button" class="auth-toggle" aria-label="Show password" data-toggle-password>
                         <svg class="auth-toggle-eye" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -56,20 +72,16 @@
                 </div>
             </div>
 
+            {% if form.confirm_password.errors %}
+                {% for error in form.confirm_password.errors %}
+                    <div class="auth-error">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+
             {{ form.submit(class="auth-submit") }}
         </form>
 
-        <script>
-            document.querySelectorAll('[data-toggle-password]').forEach((btn) => {
-                btn.addEventListener('click', () => {
-                    const input = btn.parentElement.querySelector('input');
-                    const showing = input.type === 'text';
-                    input.type = showing ? 'password' : 'text';
-                    btn.classList.toggle('is-visible', !showing);
-                    btn.setAttribute('aria-label', showing ? 'Show password' : 'Hide password');
-                });
-            });
-        </script>
+        <script src="{{ url_for('static', filename='js/frontend/show-password.js')}}"></script>
 
         <div class="auth-footer">
             <small>
