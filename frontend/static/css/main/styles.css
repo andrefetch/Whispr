@@ -1,0 +1,206 @@
+.navbar .nav-link {
+    color: var(--text-primary);
+    transition: color 0.15s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: var(--accent);
+}
+
+.navbar-brand:hover {
+    color: var(--accent) !important;
+    opacity: 0.85;
+}
+
+/* Bootstrap's default toggler icon is dark — recolor for the cream bg */
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 2px var(--accent-light);
+}
+
+/* Sign Up button hover */
+.navbar .btn:hover {
+    background-color: var(--danger) !important;
+    color: var(--bg-card) !important;
+}
+
+body {
+    background-color: var(--bg-page);
+    position: relative;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+        linear-gradient(to right, rgba(44, 42, 38, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(44, 42, 38, 0.08) 1px, transparent 1px);
+    background-size: 48px 48px;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+            mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+    animation: grid-reveal 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes grid-reveal {
+    0% {
+        opacity: 0;
+        -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 10%);
+                mask-image: radial-gradient(ellipse at center, black 0%, transparent 10%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+                mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+    }
+}
+
+/* Make sure your actual content sits above the grid */
+body > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== Hero section ===== */
+.hero-section {
+    min-height: calc(100vh - 80px); /* subtract navbar height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+}
+
+.hero-text {
+    max-width: 640px;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: clamp(3.5rem, 9vw, 6rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1;
+}
+
+/* Subtle accent underline under the title */
+.hero-title::after {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 4px;
+    background-color: var(--accent);
+    border-radius: 2px;
+    margin: 1.25rem auto 0;
+}
+
+.tagline {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tagline-cont {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+/* ===== Get Started button ===== */
+.tagline-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    color: var(--accent);
+    background: transparent;
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.tagline-button:hover {
+    color: var(--bg-card);
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+.tagline-button svg {
+    transition: transform 0.2s ease;
+}
+
+.tagline-button:hover svg {
+    transform: translateX(4px);
+}
+
+.highlight {
+    color: var(--accent);
+}
+
+/* Glass shimmer reveal — apply to your headline words */
+.glass-text {
+    display: inline-block;
+    background: linear-gradient(
+        100deg,
+        var(--text-primary) 0%,
+        var(--text-primary) 40%,
+        #ffffff 50%,
+        var(--text-primary) 60%,
+        var(--text-primary) 100%
+    );
+    background-size: 250% 100%;
+    background-position: 150% 0;
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+            color: transparent;
+    opacity: 0;
+    animation: glass-reveal 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+}
+
+/* Variant for your accent word — burnt orange with cream highlight */
+.glass-text.accent {
+    background: linear-gradient(
+        100deg,
+        var(--accent) 0%,
+        var(--accent) 40%,
+        var(--accent-light) 50%,
+        var(--accent) 60%,
+        var(--accent) 100%
+    );
+    background-size: 250% 100%;
+    background-position: 150% 0;
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes glass-reveal {
+    0%   { opacity: 0; background-position: 150% 0; }
+    40%  { opacity: 1; }
+    100% { opacity: 1; background-position: -50% 0; }
+}
+
+/* Gentle fade-up for supporting text */
+.fade-in {
+    opacity: 0;
+    animation: fade-up 1.2s cubic-bezier(0.22, 1, 0.36, 1) 1.1s forwards;
+}
+
+@keyframes fade-up {
+    0%   { opacity: 0; transform: translateY(6px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

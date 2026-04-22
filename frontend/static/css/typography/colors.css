@@ -1,0 +1,39 @@
+:root {
+    --bg-page: #FAF7F2;
+    --bg-surface: #F2EEE6;
+    --bg-card: #FFFFFF;
+    --border: #E8E3D8;
+    --text-primary: #2C2A26;
+    --text-muted: #6B665D;
+    --accent: #C2410C;
+    --accent-light: #FDDAC8;
+    --secondary: #0F766E;
+    --secondary-light: #C8F0EA;
+    --warning: #B45309;
+    --danger: #7C2D12;
+
+    /* Override Bootstrap's variables */
+    --bs-body-bg: var(--bg-page);
+    --bs-body-color: var(--text-primary);
+    --bs-secondary-color: var(--text-muted);
+    --bs-border-color: var(--border);
+    
+    --bs-primary: var(--accent);
+    --bs-primary-rgb: 194, 65, 12;         /* C2410C in RGB */
+    
+    --bs-secondary: var(--secondary);
+    --bs-secondary-rgb: 15, 118, 110;      /* 0F766E in RGB */
+    
+    --bs-warning: var(--warning);
+    --bs-warning-rgb: 180, 83, 9;          /* B45309 in RGB */
+    
+    --bs-danger: var(--danger);
+    --bs-danger-rgb: 124, 45, 18;          /* 7C2D12 in RGB */
+    
+    --bs-link-color: var(--secondary);
+    --bs-link-hover-color: var(--accent);
+    --bs-link-color-rgb: 15, 118, 110;
+    --bs-link-hover-color-rgb: 194, 65, 12;
+}
+
+a:hover { color: var(--accent); }

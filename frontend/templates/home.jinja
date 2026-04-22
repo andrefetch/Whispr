@@ -1,23 +1,27 @@
 {% extends "layout.jinja" %}
 {% block content %}
-<div class="hero-section">
+<section class="hero-section">
+    <div class="hero-bg"></div>
     <div class="hero-text">
-    <h1>
-        Whispr
-    </h1>
+        <h1 class="hero-title">
+            <span class="glass-text">Whispr</span>
+        </h1>
 
-    <p class="tagline">
-    A chatroom service that keeps your conversations yours. No data collected, no snooping, no catch.
-    </p> 
-
-    <p class="tagline-cont">
-    Well, what's holding you back?
-        <form action="{{ url_for('chat') }}">
-            <button type="submit" class="tagline-button">
-                <span>Get Started</span>
-            </button>
+        <p class="tagline fade-in fade-in-1">
+            A free, <u class="highlight">open sourced</u> chatroom service that keeps your conversations yours. No data collected, no snooping, no catch.
         </p>
-        </form>  
+
+        <p class="tagline-cont fade-in fade-in-2">
+            Well, what's holding you back?
+        </p>
+
+        <a href="{{ url_for('login') }}" class="tagline-button fade-in fade-in-3">
+            <span>Get Started</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+        </a>
     </div>
-</div>
-{% endblock %}
+</section>
+{% endblock content %}
