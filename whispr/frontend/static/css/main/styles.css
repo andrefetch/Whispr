@@ -225,6 +225,11 @@ body > * {
                 0 8px 24px rgba(44, 42, 38, 0.06);
 }
 
+.auth-card.fade-in {
+    animation-duration: 0.45s;
+    animation-delay: 0s;
+}
+
 .auth-title {
     font-size: 1.75rem;
     font-weight: 700;
