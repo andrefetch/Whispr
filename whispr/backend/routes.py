@@ -6,11 +6,7 @@ from whispr.backend.models import User, Chatroom, Message
 @app.route("/")
 @app.route('/home')
 def home():
-    return render_template('home.jinja', title="Home")
-
-@app.route("/about")
-def about():
-    return render_template('about.jinja', title="About")
+    return render_template('home.jinja', title="Whispr")
 
 @app.route("/chat")
 def chat():

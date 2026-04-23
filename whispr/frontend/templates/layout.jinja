@@ -26,9 +26,6 @@
                     <a class="nav-link{% if request.endpoint == 'home' %} is-active{% endif %}" href="{{ url_for('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link{% if request.endpoint == 'about' %} is-active{% endif %}" href="{{ url_for('about') }}">About</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link{% if request.endpoint == 'login' %} is-active{% endif %}" href="{{ url_for('login') }}">Login</a>
                 </li>
                 <li class="nav-item nav-divider d-none d-lg-block" aria-hidden="true"></li>
