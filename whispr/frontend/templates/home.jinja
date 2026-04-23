@@ -3,8 +3,26 @@
 <section class="hero-section">
     <div class="hero-bg"></div>
     <div class="hero-text">
+        <svg class="hero-squiggle" viewBox="0 0 500 280" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <filter id="crayon" x="-8%" y="-8%" width="116%" height="116%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" seed="4" result="coarse"/>
+                    <feDisplacementMap in="SourceGraphic" in2="coarse" scale="6" result="wobble"/>
+                    <feTurbulence type="fractalNoise" baseFrequency="2.2" numOctaves="2" seed="9" result="grain"/>
+                    <feDisplacementMap in="wobble" in2="grain" scale="1.6"/>
+                </filter>
+            </defs>
+            <g filter="url(#crayon)">
+                <path d="M 70 215 C 90 225, 110 220, 130 200 C 165 160, 180 85, 235 140 C 285 190, 275 265, 320 240 C 370 210, 370 75, 420 105"
+                      fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.22"/>
+                <path d="M 70 215 C 90 225, 110 220, 130 200 C 165 160, 180 85, 235 140 C 285 190, 275 265, 320 240 C 370 210, 370 75, 420 105"
+                      fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+                <path d="M 70 215 C 90 225, 110 220, 130 200 C 165 160, 180 85, 235 140 C 285 190, 275 265, 320 240 C 370 210, 370 75, 420 105"
+                      fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+            </g>
+        </svg>
         <h1 class="hero-title">
-            <span class="glass-text">Whispr</span>
+            <span class="whispr-wordmark">Whispr</span>
         </h1>
 
         <p class="tagline fade-in fade-in-1">

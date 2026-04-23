@@ -1,11 +1,21 @@
-.navbar .nav-link {
-    color: var(--text-primary);
-    transition: color 0.15s ease;
+/* ===== Navbar ===== */
+.site-navbar {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+    padding-top: 0.55rem;
+    padding-bottom: 0.55rem;
+    box-shadow: 0 0 0 rgba(44, 42, 38, 0);
+    transition: box-shadow 0.2s ease, background-color 0.2s ease,
+                padding-top 0.2s ease, padding-bottom 0.2s ease;
 }
 
-.navbar .nav-link:hover,
-.navbar .nav-link:focus {
-    color: var(--accent);
+.site-navbar.is-scrolled {
+    box-shadow: 0 4px 14px rgba(44, 42, 38, 0.06);
+}
+
+.navbar-brand {
+    color: var(--accent) !important;
+    transition: color 0.15s ease, opacity 0.15s ease;
 }
 
 .navbar-brand:hover {
@@ -13,15 +23,101 @@
     opacity: 0.85;
 }
 
+.brand-mark {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(194, 65, 12, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navbar-brand:hover .brand-mark {
+    transform: rotate(-6deg);
+    box-shadow: 0 3px 8px rgba(194, 65, 12, 0.28);
+}
+
+.brand-word {
+    letter-spacing: -0.01em;
+}
+
+.navbar .nav-link {
+    position: relative;
+    color: var(--text-primary);
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+    transition: color 0.15s ease;
+}
+
+.navbar .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0.85rem;
+    right: 0.85rem;
+    bottom: 0.3rem;
+    height: 2px;
+    background-color: var(--accent);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.2s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: var(--accent);
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link:focus-visible::after,
+.navbar .nav-link.is-active::after {
+    transform: scaleX(1);
+}
+
+.navbar .nav-link.is-active {
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.nav-divider {
+    width: 1px;
+    height: 20px;
+    margin: 0 0.5rem;
+    background-color: var(--border);
+}
+
 /* Bootstrap's default toggler icon is dark — recolor for the cream bg */
 .navbar-toggler:focus {
     box-shadow: 0 0 0 2px var(--accent-light);
 }
 
-/* Sign Up button hover */
-.navbar .btn:hover {
-    background-color: var(--danger) !important;
-    color: var(--bg-card) !important;
+/* Sign Up CTA */
+.nav-cta {
+    background-color: var(--accent);
+    color: var(--bg-card);
+    border: 1px solid var(--accent);
+    box-shadow: 0 1px 2px rgba(194, 65, 12, 0.18);
+    transition: background-color 0.15s ease, border-color 0.15s ease,
+                color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.nav-cta:hover {
+    background-color: var(--danger);
+    border-color: var(--danger);
+    color: var(--bg-card);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(124, 45, 18, 0.22);
+}
+
+.nav-cta:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(194, 65, 12, 0.18);
+}
+
+.nav-cta.is-active {
+    background-color: var(--danger);
+    border-color: var(--danger);
+    box-shadow: 0 0 0 3px var(--accent-light);
 }
 
 body {
@@ -74,8 +170,36 @@ body > * {
 }
 
 .hero-text {
+    position: relative;
     max-width: 640px;
     text-align: center;
+}
+
+/* Decorative wavy squiggle sitting behind the hero text */
+.hero-squiggle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 220%;
+    max-width: 1800px;
+    height: auto;
+    transform: translate(-50%, -50%) rotate(-30deg);
+    color: var(--accent);
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+    animation: squiggle-in 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
+}
+
+/* Keep all real content above the squiggle */
+.hero-text > *:not(.hero-squiggle) {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes squiggle-in {
+    0%   { opacity: 0; transform: translate(-50%, -50%) rotate(-30deg) scale(0.94); }
+    100% { opacity: 0.4; transform: translate(-50%, -50%) rotate(-30deg) scale(1); }
 }
 
 .hero-title {
@@ -136,6 +260,13 @@ body > * {
     color: var(--bg-card);
     background-color: var(--accent);
     border-color: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(194, 65, 12, 0.18);
+}
+
+.tagline-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(194, 65, 12, 0.15);
 }
 
 .tagline-button svg {
@@ -194,11 +325,49 @@ body > * {
     100% { opacity: 1; background-position: -50% 0; }
 }
 
+/* Whispr title — single sweep shimmer with a hard color split between "Whis" and "pr" */
+.whispr-wordmark {
+    display: inline-block;
+    background:
+        linear-gradient(
+            100deg,
+            transparent 0%,
+            transparent 40%,
+            #ffffff 50%,
+            transparent 60%,
+            transparent 100%
+        ) 150% 0 / 250% 100% no-repeat,
+        linear-gradient(
+            to right,
+            var(--text-primary) 0%,
+            var(--text-primary) 72%,
+            var(--accent) 72%,
+            var(--accent) 100%
+        );
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+            color: transparent;
+    opacity: 0;
+    animation: whispr-shine 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+}
+
+@keyframes whispr-shine {
+    0%   { opacity: 0; background-position: 150% 0, 0 0; }
+    40%  { opacity: 1; }
+    100% { opacity: 1; background-position: -50% 0, 0 0; }
+}
+
 /* Gentle fade-up for supporting text */
 .fade-in {
     opacity: 0;
     animation: fade-up 1.2s cubic-bezier(0.22, 1, 0.36, 1) 1.1s forwards;
 }
+
+/* Stagger helpers — apply after .fade-in to offset the start */
+.fade-in-1 { animation-delay: 1.1s; }
+.fade-in-2 { animation-delay: 1.35s; }
+.fade-in-3 { animation-delay: 1.6s; }
 
 @keyframes fade-up {
     0%   { opacity: 0; transform: translateY(6px); }
@@ -223,6 +392,12 @@ body > * {
     padding: 2.5rem;
     box-shadow: 0 1px 2px rgba(44, 42, 38, 0.04),
                 0 8px 24px rgba(44, 42, 38, 0.06);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.auth-card:hover {
+    box-shadow: 0 1px 2px rgba(44, 42, 38, 0.04),
+                0 14px 32px rgba(44, 42, 38, 0.08);
 }
 
 .auth-card.fade-in {
@@ -371,12 +546,27 @@ body > * {
     font-size: 0.95rem;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.15s ease, border-color 0.15s ease;
+    box-shadow: 0 1px 2px rgba(194, 65, 12, 0.15);
+    transition: background-color 0.15s ease, border-color 0.15s ease,
+                transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .auth-submit:hover {
     background-color: var(--danger);
     border-color: var(--danger);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(124, 45, 18, 0.22);
+}
+
+.auth-submit:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(124, 45, 18, 0.18);
+}
+
+.auth-submit:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--accent-light),
+                0 6px 16px rgba(194, 65, 12, 0.18);
 }
 
 .auth-forgot {
