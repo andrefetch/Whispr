@@ -10,7 +10,7 @@ app = Flask(
     static_folder=str(FRONTEND_DIR / 'static'),
 )
 
-app.config['SECRET_KEY'] = '27f447588a5d72af7908ac6c9d0b79bb'
+app.config['SECRET_KEY'] = ''
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 
 db = SQLAlchemy(app)
