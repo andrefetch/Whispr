@@ -448,7 +448,7 @@ body > * {
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--secondary));
+    background: linear-gradient(90deg, var(--accent), whitesmoke);
     opacity: 0;
     transition: opacity 0.25s ease;
 }

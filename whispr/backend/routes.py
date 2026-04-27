@@ -3,6 +3,8 @@ from whispr.backend import app
 from whispr.backend.forms import RegistrationForm, LoginForm
 from whispr.backend.models import User, Chatroom, Message
 
+
+# Flask renders routes by using decorators ex: @app.route, then the "/" goes from root to another page, you can use these routes to different jinja templates (or whatever HTML5 type you want to use)
 @app.route("/")
 @app.route('/home')
 def home():
