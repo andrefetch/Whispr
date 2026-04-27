@@ -1260,6 +1260,10 @@ body > * {
     color: var(--text-muted);
 }
 
+.chat-settings-wrapper {
+    position: relative;
+}
+
 .chat-settings-btn {
     display: inline-flex;
     align-items: center;
@@ -1275,7 +1279,8 @@ body > * {
     transition: color 0.15s ease, background-color 0.15s ease, transform 0.3s ease;
 }
 
-.chat-settings-btn:hover {
+.chat-settings-btn:hover,
+.chat-settings-wrapper.is-open .chat-settings-btn {
     color: var(--accent);
     background-color: var(--accent-light);
     transform: rotate(45deg);
@@ -1285,6 +1290,47 @@ body > * {
     outline: none;
     box-shadow: 0 0 0 2px var(--accent-light);
     color: var(--accent);
+}
+
+.chat-settings-menu {
+    position: absolute;
+    bottom: calc(100% + 0.4rem);
+    right: 0;
+    min-width: 160px;
+    padding: 0.35rem;
+    background-color: var(--bg-card, #fff);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    z-index: 20;
+}
+
+.chat-settings-menu[hidden] {
+    display: none;
+}
+
+.chat-settings-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    width: 100%;
+    padding: 0.5rem 0.65rem;
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.chat-settings-menu-item:hover,
+.chat-settings-menu-item:focus-visible {
+    background-color: var(--accent-light);
+    color: var(--accent);
+    outline: none;
+}
+
+.chat-settings-menu-item svg {
+    flex-shrink: 0;
 }
 
 .chat-main {

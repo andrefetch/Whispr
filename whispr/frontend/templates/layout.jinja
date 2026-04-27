@@ -58,18 +58,33 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-                <li class="nav-item">
-                    <a class="nav-link{% if request.endpoint == 'home' %} is-active{% endif %}" href="{{ url_for('home') }}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link{% if request.endpoint == 'login' %} is-active{% endif %}" href="{{ url_for('login') }}">Login</a>
-                </li>
-                <li class="nav-item nav-divider d-none d-lg-block" aria-hidden="true"></li>
-                <li class="nav-item">
-                    <a class="btn btn-sm px-3 nav-cta{% if request.endpoint == 'register' %} is-active{% endif %}" href="{{ url_for('register') }}">
-                        Sign Up
-                    </a>
-                </li>
+                {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link{% if request.endpoint == 'home' %} is-active{% endif %}" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{% if request.endpoint == 'chat' %} is-active{% endif %}" href="{{ url_for('chat') }}">Chat</a>
+                    </li>
+                    <li class="nav-item nav-divider d-none d-lg-block" aria-hidden="true"></li>
+                    <li class="nav-item">
+                        <a class="btn btn-sm px-3 nav-cta" href="{{ url_for('logout') }}">
+                            Logout
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link{% if request.endpoint == 'home' %} is-active{% endif %}" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link{% if request.endpoint == 'login' %} is-active{% endif %}" href="{{ url_for('login') }}">Login</a>
+                    </li>
+                    <li class="nav-item nav-divider d-none d-lg-block" aria-hidden="true"></li>
+                    <li class="nav-item">
+                        <a class="btn btn-sm px-3 nav-cta{% if request.endpoint == 'register' %} is-active{% endif %}" href="{{ url_for('register') }}">
+                            Sign Up
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>
