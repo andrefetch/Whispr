@@ -50,10 +50,13 @@ def register():
 @app.route("/logout")
 @login_required
 def logout():
-    username = current_user.username
-    logout_user()
-    flash(f'User: "{username}" has logged out successfully.', 'success')
-    return redirect(url_for('home'))
+    try:
+        username = current_user.username
+        logout_user()
+        flash(f'User: "{username}" has logged out successfully.', 'success')
+        return redirect(url_for('home'))
+    except:
+        raise Exception("Error logging out.")
 
 @app.route("/account")
 @login_required
