@@ -27,7 +27,7 @@ def login():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
-            flash('Login successful.', 'success')
+            flash(f' User: "{user.username}" → Login successful.', 'success')
             return redirect(next_page) if next_page else redirect(url_for('chat'))
         else:
             flash('Login Failed. Please check email and password.', 'danger')
@@ -48,8 +48,11 @@ def register():
     return render_template('auth/register.jinja', title="Sign Up", form=form)
 
 @app.route("/logout")
+@login_required
 def logout():
+    username = current_user.username
     logout_user()
+    flash(f'User: "{username}" has logged out successfully.', 'success')
     return redirect(url_for('home'))
 
 @app.route("/account")
