@@ -56,6 +56,7 @@ def logout():
         flash(f'User: "{username}" has logged out successfully.', 'success')
         return redirect(url_for('home'))
     except:
+        flash(f"Error logging out, check console", 'danger')
         raise Exception("Error logging out.")
 
 @app.route("/account")
