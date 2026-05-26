@@ -1,6 +1,6 @@
 # Whispr
 
-Whispr is an open sourced project that aims to give as much privacy possible in communication, utilizing hashing text messages, and dissolving the database associated with the chat after the chat has been deleted. Listed below is a technical installation and deployment of this project and how to contribute if interested.
+Whispr is an open sourced project that aims to give as much privacy possible in communication, utilizing hashing text messages, and dissolving the database associated with the chat after the chat has been deleted. Listed below is a technical installation and deployment of this project and how to contribute if interested!
 
 ## Features
 
